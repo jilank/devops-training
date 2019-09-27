@@ -4,14 +4,14 @@
 [master]
 172.31.0.10
 
-[worker]
+[prod]
 172.31.0.11
 172.31.0.12
 
 [inv]
 172.31.0.[13:15]
 
-[prod]
+[worker]
 172.31.0.11
 
 [uat]
@@ -20,6 +20,7 @@
 [DC:children]
 worker
 inv
+prod
 
 [DC:vars]
 ansible_ssh_user=root
