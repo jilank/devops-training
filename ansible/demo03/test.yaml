@@ -1,0 +1,27 @@
+---
+
+- hosts: worker
+  become: yes
+  vars:
+    doc_root: "/var/www/html"
+
+  tasks:
+  - name: Install Apache Package
+    apt: 
+      name: apache2
+      state: present
+
+  - name: Copy banner
+    template:
+      src: templates/welcome.txt
+      dest: /var/www/html/info.html
+
+  - name: Copy Info     
+    template:       
+      src: templates/info.j2       
+      dest: /var/www/html/info.html
+
+  - name: Start Apache Service
+    service: 
+      name: apache2
+      state: started
